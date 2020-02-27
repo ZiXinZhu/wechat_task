@@ -11,6 +11,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.springframework.util.StringUtils;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -42,7 +43,7 @@ public class PublicModelWechatSender {
 
         try {
             String ret = getJson(token, json);
-            log.info("返回結果:"+ret);
+            log.info("返回結果:" + ret);
             JSONObject retJsonObj = JSONObject.parseObject(ret);
             Cache.cacheList.remove(key);
             System.out.println(key + "线程：" + zzx);
@@ -59,10 +60,14 @@ public class PublicModelWechatSender {
             } else {
                 //TODO 日志添加
                 LogEntity logEntity = new LogEntity();
-                logEntity.setOpenID(String.valueOf(msg.get("uid")));
-                logEntity.setResult("失败");
-                logEntity.setDate(simpleDateFormat.format(new Date()));
-                Cache.list.add(logEntity);
+                String userOpenID = String.valueOf(msg.get("uid"));
+                if (!StringUtils.isEmpty(userOpenID)) {
+                    logEntity.setOpenID(userOpenID);
+                    logEntity.setResult("失败");
+                    logEntity.setDate(simpleDateFormat.format(new Date()));
+                    Cache.list.add(logEntity);
+                }
+
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "系统出错程序停止！");
