@@ -22,9 +22,9 @@ public class DownloadTool implements Runnable {
      * 下载execel表模板
      */
     public void download() {
-        String filePath = FileChooser.getPath() + "微信消息推送模板.xls";//文件路径
+        String filePath = FileChooser.getPath() + "\\微信消息推送模板.xls";//文件路径
         //TODO 删除之前的表
-        if (filePath.equals("微信消息推送模板.xls")) {
+        if (filePath.equals("\\微信消息推送模板.xls")) {
             return;
         }
         File file = new File(filePath);
