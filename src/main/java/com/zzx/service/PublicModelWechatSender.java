@@ -11,6 +11,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import javax.swing.*;
@@ -68,6 +69,10 @@ public class PublicModelWechatSender {
                     Cache.list.add(logEntity);
                 }
 
+            }
+            if(CollectionUtils.isEmpty(Cache.cacheList)){
+                System.setProperty("state", "stop");
+                JOptionPane.showMessageDialog(null, "发送完毕！");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "系统出错程序停止！");
