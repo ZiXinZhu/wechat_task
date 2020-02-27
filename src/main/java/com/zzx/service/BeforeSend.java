@@ -44,7 +44,7 @@ public class BeforeSend implements Runnable {
         }
 
 
-        ExecutorService executorService = Executors.newWorkStealingPool(threadNum);
+        ExecutorService executorService = Executors.newWorkStealingPool(10);
         if (maps == null || maps.size() == 0) {
             return;
         }
