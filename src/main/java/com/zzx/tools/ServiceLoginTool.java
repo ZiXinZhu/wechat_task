@@ -1,7 +1,6 @@
 package com.zzx.tools;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
@@ -12,15 +11,13 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 @Service
 public class ServiceLoginTool {
-   final static String USERNAME="admin";
-    final static String PASSWORD="123456";
-    final static String SALT="1cb23387-d51a-42d8-6e3915ede276";
-    final static String URL="http://10.8.0.78:8086/runnar_web_user/wechat/template/login";
+    final static String USERNAME = "admin";
+    final static String PASSWORD = "123456";
+    final static String SALT = "1cb23387-d51a-42d8-6e3915ede276";
+    final static String URL = "http://10.8.0.78:8086/runnar_web_user/wechat/template/login";
 
-    /*@Autowired
-    RestTemplate restTemplate;*/
 
-    public boolean login(){
+    public boolean login() {
         SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
         requestFactory.setConnectTimeout(1000);// 设置超时
         requestFactory.setReadTimeout(1000);
@@ -30,17 +27,17 @@ public class ServiceLoginTool {
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
 
         MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
-        map.add("username",USERNAME);
-        map.add("password",PASSWORD);
-        map.add("salt",SALT);
-        HttpEntity<MultiValueMap<String,String>> entity = new HttpEntity<>(map, headers);
+        map.add("username", USERNAME);
+        map.add("password", PASSWORD);
+        map.add("salt", SALT);
+        HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(map, headers);
         ResponseEntity<String> response;
         try {
-             response= restTemplate.exchange(URL, HttpMethod.POST, entity, String.class);
-        }catch (Exception e){
+            response = restTemplate.exchange(URL, HttpMethod.POST, entity, String.class);
+        } catch (Exception e) {
             return false;
         }
-        String s=response.getBody();
+        String s = response.getBody();
         return Boolean.parseBoolean(s);
     }
 }

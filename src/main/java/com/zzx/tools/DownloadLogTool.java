@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
 
-public class DownloadLogTool implements Runnable{
+public class DownloadLogTool implements Runnable {
 
     List<LogEntity> list;
 
@@ -24,13 +24,14 @@ public class DownloadLogTool implements Runnable{
     public void run() {
         download();
     }
+
     /**
      * 下载execel表模板
      */
     public void download() {
-        String filePath = FileChooser.getPath()+"微信消息推送日志.xls";//文件路径
+        String filePath = FileChooser.getPath() + "微信消息推送日志.xls";//文件路径
         //TODO 删除之前的表
-        if(filePath.equals("微信消息推送日志.xls")){
+        if (filePath.equals("微信消息推送日志.xls")) {
             return;
         }
         File file = new File(filePath);
@@ -45,8 +46,8 @@ public class DownloadLogTool implements Runnable{
         row.createCell(2).setCellValue("发送时间");
 
 
-        for(int i=0;i<list.size();i++){
-            HSSFRow row_one = sheet.createRow(i+1);
+        for (int i = 0; i < list.size(); i++) {
+            HSSFRow row_one = sheet.createRow(i + 1);
             row_one.createCell(0).setCellValue(list.get(i).getOpenID());
             row_one.createCell(1).setCellValue(list.get(i).getResult());
             row_one.createCell(2).setCellValue(list.get(i).getDate());
@@ -72,7 +73,7 @@ public class DownloadLogTool implements Runnable{
             e.printStackTrace();
         }
         System.out.println("OK!");
-        JOptionPane.showMessageDialog(null, "文件已下载至:"+filePath+"！");
+        JOptionPane.showMessageDialog(null, "文件已下载至:" + filePath + "！");
     }
 
 

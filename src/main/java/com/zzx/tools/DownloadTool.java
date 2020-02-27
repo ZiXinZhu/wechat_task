@@ -10,20 +10,21 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class DownloadTool implements Runnable{
+public class DownloadTool implements Runnable {
 
 
     @Override
     public void run() {
         download();
     }
+
     /**
      * 下载execel表模板
      */
     public void download() {
-        String filePath = FileChooser.getPath()+"微信消息推送模板.xls";//文件路径
+        String filePath = FileChooser.getPath() + "微信消息推送模板.xls";//文件路径
         //TODO 删除之前的表
-        if(filePath.equals("微信消息推送模板.xls")){
+        if (filePath.equals("微信消息推送模板.xls")) {
             return;
         }
         File file = new File(filePath);
@@ -65,7 +66,7 @@ public class DownloadTool implements Runnable{
             e.printStackTrace();
         }
         System.out.println("OK!");
-        JOptionPane.showMessageDialog(null, "文件已下载至:"+filePath+"！");
+        JOptionPane.showMessageDialog(null, "文件已下载至:" + filePath + "！");
     }
 
 

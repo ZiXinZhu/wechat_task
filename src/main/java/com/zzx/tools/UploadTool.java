@@ -20,10 +20,11 @@ public class UploadTool {
 
     /**
      * 解析execel表
+     *
      * @param path
      * @return
      */
-    public static Map<Integer,List<String>> upload(String path) {
+    public static Map<Integer, List<String>> upload(String path) {
         InputStream is = null;
         HSSFWorkbook hssfWorkbook = null;
         try {
@@ -40,7 +41,7 @@ public class UploadTool {
             e.printStackTrace();
         }
 
-        Map<Integer,List<String>> maps = new ConcurrentHashMap<>();
+        Map<Integer, List<String>> maps = new ConcurrentHashMap<>();
 
 
         // 循环工作表Sheet
@@ -66,7 +67,7 @@ public class UploadTool {
                     }
                     list.add(String.valueOf(getValue(code)));
                 }
-                maps.put(rowNum-1,list);
+                maps.put(rowNum - 1, list);
             }
         }
         return maps;
