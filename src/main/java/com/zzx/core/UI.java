@@ -91,7 +91,7 @@ public class UI implements Runnable {
             row3.add(new JLabel("token:"));
             row3.add(Box.createHorizontalStrut(40));     //创建label和textFied之间的距离
             tokenField.setPreferredSize(new Dimension(400, 30));
-            tokenField.setText("该版本工具token不需要输入！");
+//            tokenField.setText("该版本工具token不需要输入！");
             row3.add(tokenField);
 
             Box row4 = Box.createHorizontalBox();

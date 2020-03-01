@@ -39,7 +39,8 @@ public class MessageSendTask implements Runnable {
             templates = templates.replaceAll("】", "");
             map.put("json", templates);
             map.put("uid", JSON.parseObject(templates).getString("touser"));
-            sender.send(entry.getKey(), map, getToken());
+            sender.send(entry.getKey(), map, token);
+//            sender.send(entry.getKey(), map, getToken());
 
         }
     }

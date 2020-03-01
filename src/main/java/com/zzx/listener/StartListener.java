@@ -32,12 +32,12 @@ public class StartListener implements ActionListener {
         String template = ui.getUiCore().getJson();
         int threadNum = 10;
 
-        boolean result = serviceLoginTool.login();
-
-        if (!result) {
-            JOptionPane.showMessageDialog(null, "请在vpn环境下使用该工具！");
-            return;
-        }
+        //vpn环境
+//        boolean result = serviceLoginTool.login();
+//        if (!result) {
+//            JOptionPane.showMessageDialog(null, "请在vpn环境下使用该工具！");
+//            return;
+//        }
 
 
         if (StringUtils.isEmpty(template)) {
