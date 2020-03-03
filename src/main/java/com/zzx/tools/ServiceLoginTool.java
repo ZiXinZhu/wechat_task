@@ -12,9 +12,9 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class ServiceLoginTool {
     final static String USERNAME = "admin";
-    final static String PASSWORD = "123456";
+    final static String PASSWORD = "admin";
     final static String SALT = "1cb23387-d51a-42d8-6e3915ede276";
-    final static String URL = "http://10.8.0.78:8086/runnar_web_user/wechat/template/login";
+    final static String URL = "http://localhost:8086/runnar_web_user/wechat/template/login";
 
 
     public boolean login() {
